@@ -24,7 +24,6 @@ export default function Home() {
         </nav>
       </header>
 
-      <section className="mx-auto flex min-h-screen max-w-5xl flex-col justify-center px-6 py-16"></section>
       <section className="mx-auto flex min-h-screen max-w-5xl flex-col justify-center px-6 py-16">
         <div className="mb-8">
           <p className="mb-4 text-sm font-medium uppercase tracking-[0.3em] text-sky-400">
@@ -46,6 +45,15 @@ export default function Home() {
               className="rounded-full bg-sky-400 px-6 py-3 text-sm font-semibold text-slate-950 transition hover:bg-sky-300"
             >
               View Projects
+            </a>
+
+            <a
+              href="/resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-full border border-slate-600 px-6 py-3 text-sm font-semibold text-slate-100 transition hover:border-sky-400 hover:text-sky-400"
+            >
+              View Resume
             </a>
 
             <a
@@ -105,6 +113,7 @@ export default function Home() {
               <h3 className="mb-3 text-xl font-semibold text-white">
                 Distributed Key-Value Store
               </h3>
+
               <p className="text-slate-300">
                 A C++ research prototype for studying failure detection,
                 replication, and system availability.
@@ -115,6 +124,7 @@ export default function Home() {
               <h3 className="mb-3 text-xl font-semibold text-white">
                 Patrol Robot
               </h3>
+
               <p className="text-slate-300">
                 An Arduino-based robot that uses ultrasonic and PIR sensors for
                 obstacle avoidance and motion detection.
@@ -125,6 +135,7 @@ export default function Home() {
               <h3 className="mb-3 text-xl font-semibold text-white">
                 Open Source Contributions
               </h3>
+
               <p className="text-slate-300">
                 Documentation and contribution work across open-source projects
                 using Git, GitHub, and pull request workflows.
@@ -167,6 +178,15 @@ export default function Home() {
               className="rounded-full border border-slate-600 px-6 py-3 text-sm font-semibold text-slate-100 transition hover:border-sky-400 hover:text-sky-400"
             >
               LinkedIn
+            </a>
+
+            <a
+              href="/resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-full border border-slate-600 px-6 py-3 text-sm font-semibold text-slate-100 transition hover:border-sky-400 hover:text-sky-400"
+            >
+              Resume
             </a>
           </div>
         </div>
