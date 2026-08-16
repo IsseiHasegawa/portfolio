@@ -6,6 +6,7 @@ type ProjectsSectionProps = {
   projects: Content["projects"];
 };
 
+// プロジェクト一覧セクション
 export function ProjectsSection({ projects }: ProjectsSectionProps) {
   return (
     <Section id="projects" title={projects.title} titleSpacing="wide">

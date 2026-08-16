@@ -1,57 +1,65 @@
+// =============================================================================
+// app/data/content.ts — 英語(en)・日本語(ja)の表示文言とナビ定義
+// i18n ライブラリなし。content[language] で切り替える
+// =============================================================================
+
+// 翻訳オブジェクトをエクスポート
 export const content = {
+  // ---------- 英語 ----------
   en: {
-    name: "Issei Hasegawa",
+    name: "Issei Hasegawa", // ヘッダー・ヒーローの表示名
     nav: {
-      about: "About",
-      news: "News",
-      research: "Research",
-      projects: "Projects",
-      contact: "Contact",
+      about: "About", // #about リンクのラベル
+      news: "News", // #news リンクのラベル
+      research: "Research", // #research リンクのラベル
+      projects: "Projects", // #projects リンクのラベル
+      contact: "Contact", // #contact リンクのラベル
     },
     hero: {
       summary:
-        "Computer Science student interested in distributed systems, operating systems, and reliable backend infrastructure.",
-      projects: "View Projects",
-      resume: "View Resume",
-      contact: "Contact Me",
+        "Computer Science student interested in distributed systems, operating systems, and reliable backend infrastructure.", // ヒーロー下の一言紹介
+      projects: "View Projects", // プロジェクトへ飛ぶボタン文言
+      resume: "View Resume", // 履歴書ボタン文言
+      contact: "Contact Me", // 連絡先へ飛ぶボタン文言
     },
     about: {
-      title: "About",
-      body: "I am an undergraduate student majoring in Computer Science at Allegheny College. My academic interests include distributed systems, operating systems, networking systems, and software reliability. I enjoy building systems and studying how real-world infrastructure remains dependable under failures.",
+      title: "About", // 自己紹介セクション見出し
+      body: "I am an undergraduate student majoring in Computer Science at Allegheny College. My academic interests include distributed systems, operating systems, networking systems, and software reliability. I enjoy building systems and studying how real-world infrastructure remains dependable under failures.", // 自己紹介本文
     },
     research: {
-      title: "Research",
-      name: "Distributed Key-Value Store Research",
-      role: "Undergraduate Researcher · Allegheny College",
-      body: "I am designing and implementing a distributed key-value store in C++ to study the trade-offs between failure detection and replication strategies. The system uses heartbeat-based failure detection with configurable intervals and timeouts, as well as synchronous and asynchronous replication modes.",
+      title: "Research", // 研究セクション見出し
+      name: "Distributed Key-Value Store Research", // 研究テーマ名
+      role: "Undergraduate Researcher · Allegheny College", // 役割・所属
+      body: "I am designing and implementing a distributed key-value store in C++ to study the trade-offs between failure detection and replication strategies. The system uses heartbeat-based failure detection with configurable intervals and timeouts, as well as synchronous and asynchronous replication modes.", // 研究の説明
     },
     projects: {
-      title: "Projects",
+      title: "Projects", // プロジェクトセクション見出し
       items: [
         {
-          title: "Distributed Key-Value Store",
-          body: "A C++ research prototype for studying failure detection, replication, and system availability.",
+          title: "Distributed Key-Value Store", // プロジェクト1のタイトル
+          body: "A C++ research prototype for studying failure detection, replication, and system availability.", // プロジェクト1の説明
         },
         {
-          title: "Open Source Contributions",
-          body: "Documentation and contribution work across open-source projects using Git, GitHub, and pull request workflows.",
+          title: "Open Source Contributions", // プロジェクト2のタイトル
+          body: "Documentation and contribution work across open-source projects using Git, GitHub, and pull request workflows.", // プロジェクト2の説明
         },
       ],
     },
     contact: {
-      title: "Contact",
-      body: "I am interested in software engineering, backend systems, distributed systems, and research opportunities.",
-      email: "Email",
-      resume: "Resume",
+      title: "Contact", // 連絡先セクション見出し
+      body: "I am interested in software engineering, backend systems, distributed systems, and research opportunities.", // 連絡先の前置き文
+      email: "Email", // メールボタンラベル
+      resume: "Resume", // 履歴書ボタンラベル
     },
-    language: "Language",
+    language: "Language", // 言語切替 UI の aria-label
     news: {
-      title: "News",
-      empty: "No updates yet. Add items in app/data/news.ts.",
+      title: "News", // お知らせセクション見出し
+      empty: "No updates yet. Add items in app/data/news.ts.", // お知らせ0件時のメッセージ
     },
   },
+  // ---------- 日本語（キー構造は en と同一） ----------
   ja: {
-    name: "長谷川一聖",
+    name: "長谷川一聖", // 日本語での表示名
     nav: {
       about: "自己紹介",
       news: "お知らせ",
@@ -101,18 +109,25 @@ export const content = {
       empty: "まだありません。app/data/news.ts に項目を追加してください。",
     },
   },
-} as const;
+} as const; // リテラル型を固定し、型推論を厳密にする
 
+// content のキー "en" | "ja" からなる型
 export type Language = keyof typeof content;
+
+// 1言語分の文言オブジェクトの型
 export type Content = (typeof content)[Language];
+
+// nav オブジェクトのキー型（about, news, ...）
 export type NavKey = keyof Content["nav"];
 
+// 言語切替ボタンでループする配列
 export const languages = ["en", "ja"] as const satisfies readonly Language[];
 
+// ヘッダーナビのリンク定義（href と nav のキーを対応付け）
 export const sectionNav: readonly { href: string; labelKey: NavKey }[] = [
-  { href: "#about", labelKey: "about" },
-  { href: "#news", labelKey: "news" },
-  { href: "#research", labelKey: "research" },
-  { href: "#projects", labelKey: "projects" },
-  { href: "#contact", labelKey: "contact" },
+  { href: "#about", labelKey: "about" }, // 自己紹介へジャンプ
+  { href: "#news", labelKey: "news" }, // お知らせへジャンプ
+  { href: "#research", labelKey: "research" }, // 研究へジャンプ
+  { href: "#projects", labelKey: "projects" }, // プロジェクトへジャンプ
+  { href: "#contact", labelKey: "contact" }, // 連絡先へジャンプ
 ];

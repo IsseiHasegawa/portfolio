@@ -1,19 +1,21 @@
+/* Tailwind CSS v4 をプロジェクトに読み込む */
 @import "tailwindcss";
 
+/* グローバル CSS 変数（背景・文字色のデフォルト） */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #ffffff; /* 白背景 */
+  --foreground: #171717; /* ほぼ黒の文字色 */
 }
 
+/* Tailwind のテーマ変数に CSS 変数をマッピング */
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: Arial, Helvetica, sans-serif;
-  --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  --font-sans: Arial, Helvetica, sans-serif; /* サンセリフフォント */
+  --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace; /* 等幅フォント */
 }
 
-/* Portfolio uses a fixed light theme for a consistent professional look */
-
+/* ページ全体の body に基本スタイルを適用 */
 body {
   background: var(--background);
   color: var(--foreground);

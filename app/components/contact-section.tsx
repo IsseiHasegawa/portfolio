@@ -7,6 +7,7 @@ type ContactSectionProps = {
   contact: Content["contact"];
 };
 
+// 連絡先セクション
 export function ContactSection({ contact }: ContactSectionProps) {
   return (
     <Section id="contact" title={contact.title}>
@@ -14,7 +15,7 @@ export function ContactSection({ contact }: ContactSectionProps) {
 
       <div className="flex flex-wrap gap-4">
         <ButtonLink href={siteLinks.email} variant="primary">
-          {contact.email}
+          {contact.email} {/* mailto: リンク */}
         </ButtonLink>
         <ButtonLink href={siteLinks.github} external>
           GitHub
