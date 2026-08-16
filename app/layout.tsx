@@ -6,27 +6,14 @@
 import type { Metadata } from "next";
 // グローバル CSS（Tailwind と body の基本スタイル）を読み込む
 import "./globals.css";
-
-// サイトのベース URL を環境に応じて決める関数
-function siteUrl(): string {
-  // 環境変数 NEXT_PUBLIC_SITE_URL があれば最優先（独自ドメイン用）
-  const explicit = process.env.NEXT_PUBLIC_SITE_URL?.trim();
-  if (explicit) {
-    // 末尾スラッシュを除いて統一
-    return explicit.replace(/\/$/, "");
-  }
-  // Vercel デプロイ時に自動設定されるホスト名
-  const vercel = process.env.VERCEL_URL?.trim();
-  if (vercel) {
-    // https:// を付け、余分なスラッシュや既存のプロトコルを除去
-    return `https://${vercel.replace(/^https?:\/\//, "").replace(/\/$/, "")}`;
-  }
-  // ローカル開発時のデフォルト
-  return "http://localhost:3000";
-}
+// sitemap / robots と共通のベース URL
+import { siteUrl } from "./lib/site-url";
+// 外部プロフィールへのリンク（構造化データの sameAs に使う）
+import { siteLinks } from "./data/site-links";
 
 // OGP 等で使う「サイトのルート URL」オブジェクト
-const metadataBase = new URL(`${siteUrl()}/`);
+const siteBase = siteUrl();
+const metadataBase = new URL(`${siteBase}/`);
 
 // ブラウザタブ・SNS シェア用のデフォルトタイトル
 const defaultTitle = "Issei Hasegawa | Portfolio";
@@ -61,7 +48,8 @@ export const metadata: Metadata = {
     description,
   },
   twitter: { // X (Twitter) カード用
-    card: "summary",
+    // opengraph-image.tsx が 1200x630 を生成するので大きいカードを使う
+    card: "summary_large_image",
     title: defaultTitle,
     description,
   },
@@ -74,6 +62,33 @@ export const metadata: Metadata = {
   },
 };
 
+// 検索エンジンに「誰のサイトか」を機械可読な形で伝える構造化データ。
+// 名前だけでは同姓同名と区別できないため、所属・専門分野・外部プロフィールを添える。
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Issei Hasegawa",
+  alternateName: "長谷川一聖",
+  url: siteBase,
+  description,
+  jobTitle: "Undergraduate Researcher",
+  email: siteLinks.email.replace(/^mailto:/, ""),
+  affiliation: {
+    "@type": "CollegeOrUniversity",
+    name: "Allegheny College",
+    url: "https://allegheny.edu",
+  },
+  knowsAbout: [
+    "Distributed Systems",
+    "Operating Systems",
+    "Computer Networks",
+    "Software Reliability",
+    "C++",
+  ],
+  // LinkedIn は未設定のことがあるので空の項目を落とす
+  sameAs: [siteLinks.github, siteLinks.linkedIn].filter(Boolean),
+};
+
 // ルートレイアウト: すべての page.tsx を包む
 export default function RootLayout({
   children, // 子として page.tsx の内容が入る
@@ -84,7 +99,16 @@ export default function RootLayout({
     // ドキュメントルート。lang は HTML 標準の言語属性
     <html lang="en" className="h-full antialiased">
       {/* ページ本体。children に Home コンポーネントが表示される */}
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        {/* 構造化データ。"<" をエスケープして script の早期終了を防ぐ */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(personJsonLd).replace(/</g, "\\u003c"),
+          }}
+        />
+        {children}
+      </body>
     </html>
   );
 }
