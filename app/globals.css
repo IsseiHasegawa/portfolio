@@ -11,13 +11,30 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: Arial, Helvetica, sans-serif; /* サンセリフフォント */
+
+  /* 欧文は Inter（layout.tsx が --font-inter を定義）。
+     日本語の Web フォントは数 MB 規模になるため読み込まず、OS 標準の
+     ゴシック体に委ねる。並び順は macOS → Windows → Linux。 */
+  --font-sans: var(--font-inter), "Hiragino Sans", "Hiragino Kaku Gothic ProN",
+    "Yu Gothic", "Noto Sans JP", sans-serif;
   --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace; /* 等幅フォント */
+}
+
+/* ヘッダー内リンクでのページ内ジャンプを滑らかにする */
+html {
+  scroll-behavior: smooth;
+}
+
+/* 動きを抑える設定の利用者にはスクロールアニメーションを与えない */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
 
 /* ページ全体の body に基本スタイルを適用 */
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
 }

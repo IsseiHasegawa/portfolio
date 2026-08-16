@@ -52,6 +52,7 @@ export const content = {
       resume: "Resume", // 履歴書ボタンラベル
     },
     language: "Language", // 言語切替 UI の aria-label
+    menu: "Menu", // モバイルのメニュー開閉ボタンの aria-label
     news: {
       title: "News", // お知らせセクション見出し
       empty: "No updates yet. Add items in app/data/news.ts.", // お知らせ0件時のメッセージ
@@ -104,6 +105,7 @@ export const content = {
       resume: "履歴書",
     },
     language: "言語",
+    menu: "メニュー",
     news: {
       title: "お知らせ",
       empty: "まだありません。app/data/news.ts に項目を追加してください。",

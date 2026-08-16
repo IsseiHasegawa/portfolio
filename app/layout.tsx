@@ -4,12 +4,22 @@
 
 // Next.js のメタデータ型をインポート（<head> タグ用の設定）
 import type { Metadata } from "next";
+// 本文用の欧文フォント。next/font がビルド時に取得して自己ホストする
+import { Inter } from "next/font/google";
 // グローバル CSS（Tailwind と body の基本スタイル）を読み込む
 import "./globals.css";
 // sitemap / robots と共通のベース URL
 import { siteUrl } from "./lib/site-url";
 // 外部プロフィールへのリンク（構造化データの sameAs に使う）
 import { siteLinks } from "./data/site-links";
+
+// 可変フォントを CSS 変数として公開し、globals.css の --font-sans から参照する。
+// display: "swap" で、フォント取得中もテキストが消えないようにする。
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
 
 // OGP 等で使う「サイトのルート URL」オブジェクト
 const siteBase = siteUrl();
@@ -97,7 +107,7 @@ export default function RootLayout({
 }>) {
   return (
     // ドキュメントルート。lang は HTML 標準の言語属性
-    <html lang="en" className="h-full antialiased">
+    <html lang="en" className={`${inter.variable} h-full antialiased`}>
       {/* ページ本体。children に Home コンポーネントが表示される */}
       <body className="min-h-full flex flex-col">
         {/* 構造化データ。"<" をエスケープして script の早期終了を防ぐ */}

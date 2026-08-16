@@ -41,6 +41,7 @@ export default function Home() {
         name={t.name} // ヘッダー左の表示名
         nav={t.nav} // ナビ各リンクのラベル
         languageLabel={t.language} // 言語ボタン群の aria-label 用
+        menuLabel={t.menu} // モバイル開閉ボタンの aria-label 用
         language={language} // 現在選択中の言語
         onLanguageChange={setLanguage} // ボタン押下時に language を更新する関数
       />

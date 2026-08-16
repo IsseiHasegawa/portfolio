@@ -17,7 +17,11 @@ export function Section({
   const titleMargin = titleSpacing === "wide" ? "mb-8" : "mb-6";
 
   return (
-    <section id={id} className="border-t border-slate-200 px-6 py-20">
+    // scroll-mt-20: ページ内ジャンプの着地点が固定ヘッダーに潜り込まないようにする
+    <section
+      id={id}
+      className="scroll-mt-20 border-t border-slate-200 px-6 py-20"
+    >
       {/* コンテンツ最大幅を max-w-5xl で中央寄せ */}
       <div className="mx-auto max-w-5xl">
         <h2 className={`${titleMargin} text-3xl font-bold text-slate-900`}>
