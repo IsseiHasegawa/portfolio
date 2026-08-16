@@ -1,7 +1,16 @@
-// サイト内で使う固定 URL を1か所にまとめたオブジェクト
-export const siteLinks = {
+// サイト内で使う固定 URL を1か所にまとめる
+type SiteLinks = {
+  email: string;
+  github: string;
+  // 空文字の間は Contact にボタンを描画しない。
+  // 未設定のまま出すと LinkedIn のトップページに飛ばしてしまうため
+  linkedIn: string;
+  resume: string;
+};
+
+export const siteLinks: SiteLinks = {
   email: "mailto:hasegawa01@allegheny.edu", // メールクライアントを開くリンク
   github: "https://github.com/IsseiHasegawa", // GitHub プロフィール
-  linkedIn: "https://www.linkedin.com/", // LinkedIn（要: 実際のプロフィール URL に差し替え可）
+  linkedIn: "", // TODO: https://www.linkedin.com/in/<自分のID> を設定する
   resume: "/resume.pdf", // public フォルダ内の PDF へのパス
-} as const; // 読み取り専用・リテラル型に固定
+};

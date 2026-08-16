@@ -54,6 +54,7 @@ export function SiteHeader({
               <button
                 key={option}
                 type="button"
+                lang={option} // ラベル「日本語」を英語として読み上げさせない
                 aria-pressed={language === option} // 選択中かどうか
                 onClick={() => onLanguageChange(option)} // 親の state を更新
                 className={`rounded-full px-3 py-1 text-xs font-semibold transition ${

@@ -10,6 +10,8 @@
 import { useState } from "react";
 // 翻訳データと言語型をインポート
 import { content, type Language } from "./data/content";
+// <html lang> を現在の言語に追従させるフック
+import { useDocumentLanguage } from "./lib/use-document-language";
 // 各セクションの UI コンポーネントをインポート
 import { AboutSection } from "./components/about-section";
 import { ContactSection } from "./components/contact-section";
@@ -26,6 +28,9 @@ export default function Home() {
 
   // language が "en" なら content.en、"ja" なら content.ja が入る
   const t = content[language];
+
+  // 支援技術に正しい言語を伝えるため <html lang> を同期する
+  useDocumentLanguage(language);
 
   // JSX を返してブラウザに描画させる
   return (

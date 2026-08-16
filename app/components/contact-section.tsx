@@ -20,9 +20,12 @@ export function ContactSection({ contact }: ContactSectionProps) {
         <ButtonLink href={siteLinks.github} external>
           GitHub
         </ButtonLink>
-        <ButtonLink href={siteLinks.linkedIn} external>
-          LinkedIn
-        </ButtonLink>
+        {/* URL 未設定のうちは出さない（site-links.ts を参照） */}
+        {siteLinks.linkedIn ? (
+          <ButtonLink href={siteLinks.linkedIn} external>
+            LinkedIn
+          </ButtonLink>
+        ) : null}
         <ButtonLink href={siteLinks.resume} external>
           {contact.resume}
         </ButtonLink>
