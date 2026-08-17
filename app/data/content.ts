@@ -1,106 +1,104 @@
 // =============================================================================
 // app/data/content.ts — 英語(en)・日本語(ja)の表示文言とナビ定義
 // i18n ライブラリなし。content[language] で切り替える
+//
+// 経歴・プロジェクト・学歴などの実データは roles.ts / projects.ts /
+// background.ts にある。ここに置くのは見出しと固定文言だけ。
 // =============================================================================
 
-// 翻訳オブジェクトをエクスポート
 export const content = {
   // ---------- 英語 ----------
   en: {
     name: "Issei Hasegawa", // ヘッダー・ヒーローの表示名
     nav: {
-      about: "About", // #about リンクのラベル
-      news: "News", // #news リンクのラベル
-      research: "Research", // #research リンクのラベル
-      projects: "Projects", // #projects リンクのラベル
-      contact: "Contact", // #contact リンクのラベル
+      about: "About",
+      news: "News",
+      research: "Research",
+      projects: "Projects",
+      experience: "Experience",
+      skills: "Skills",
+      contact: "Contact",
     },
     hero: {
+      location: "Meadville, PA · United States",
       summary:
-        "Computer Science student interested in distributed systems, operating systems, and reliable backend infrastructure.", // ヒーロー下の一言紹介
+        "Computer Science undergraduate at Allegheny College. I research machine learning systems, distributed systems, and the tooling that keeps software dependable when parts of it break.",
       projects: "View Projects", // プロジェクトへ飛ぶボタン文言
       resume: "View Resume", // 履歴書ボタン文言
       contact: "Contact Me", // 連絡先へ飛ぶボタン文言
     },
     about: {
-      title: "About", // 自己紹介セクション見出し
-      body: "I am an undergraduate student majoring in Computer Science at Allegheny College. My academic interests include distributed systems, operating systems, networking systems, and software reliability. I enjoy building systems and studying how real-world infrastructure remains dependable under failures.", // 自己紹介本文
+      title: "About",
+      body: "I am an undergraduate at Allegheny College majoring in Computer Science with a minor in Economics. My work sits where systems meet software reliability: I build tools that expose the weaknesses a test suite hides, and distributed prototypes that turn failure-handling trade-offs into numbers you can compare. I am drawn to infrastructure that keeps working after something in it goes wrong.",
+      educationTitle: "Education",
+      awardsTitle: "Awards & Honors",
     },
     research: {
-      title: "Research", // 研究セクション見出し
-      name: "Distributed Key-Value Store Research", // 研究テーマ名
-      role: "Undergraduate Researcher · Allegheny College", // 役割・所属
-      body: "I am designing and implementing a distributed key-value store in C++ to study the trade-offs between failure detection and replication strategies. The system uses heartbeat-based failure detection with configurable intervals and timeouts, as well as synchronous and asynchronous replication modes.", // 研究の説明
+      title: "Research",
     },
     projects: {
-      title: "Projects", // プロジェクトセクション見出し
-      items: [
-        {
-          title: "Distributed Key-Value Store", // プロジェクト1のタイトル
-          body: "A C++ research prototype for studying failure detection, replication, and system availability.", // プロジェクト1の説明
-        },
-        {
-          title: "Open Source Contributions", // プロジェクト2のタイトル
-          body: "Documentation and contribution work across open-source projects using Git, GitHub, and pull request workflows.", // プロジェクト2の説明
-        },
-      ],
+      title: "Projects",
+    },
+    experience: {
+      title: "Experience",
+    },
+    skills: {
+      title: "Skills",
     },
     contact: {
-      title: "Contact", // 連絡先セクション見出し
-      body: "I am interested in software engineering, backend systems, distributed systems, and research opportunities.", // 連絡先の前置き文
+      title: "Contact",
+      body: "I am looking for software engineering and research opportunities in systems, distributed infrastructure, and machine learning systems.",
       email: "Email", // メールボタンラベル
       resume: "Resume", // 履歴書ボタンラベル
     },
     language: "Language", // 言語切替 UI の aria-label
     menu: "Menu", // モバイルのメニュー開閉ボタンの aria-label
     news: {
-      title: "News", // お知らせセクション見出し
-      empty: "No updates yet. Add items in app/data/news.ts.", // お知らせ0件時のメッセージ
+      title: "News",
+      empty: "No updates yet.",
     },
   },
   // ---------- 日本語（キー構造は en と同一） ----------
   ja: {
-    name: "長谷川一聖", // 日本語での表示名
+    name: "長谷川一聖",
     nav: {
       about: "自己紹介",
       news: "お知らせ",
       research: "研究",
       projects: "プロジェクト",
+      experience: "経歴",
+      skills: "スキル",
       contact: "連絡先",
     },
     hero: {
+      location: "米国ペンシルベニア州ミードビル",
       summary:
-        "分散システム、オペレーティングシステム、信頼性の高いバックエンド基盤に関心を持つコンピューターサイエンス専攻の学生です。",
+        "アレゲニー大学コンピュータサイエンス専攻。機械学習システム、分散システム、そして一部が壊れてもソフトウェアを動かし続けるための技術を研究しています。",
       projects: "プロジェクトを見る",
       resume: "履歴書を見る",
-      contact: "連絡先",
+      contact: "連絡する",
     },
     about: {
       title: "自己紹介",
-      body: "Allegheny Collegeでコンピューターサイエンスを専攻している学部生です。分散システム、オペレーティングシステム、ネットワークシステム、ソフトウェアの信頼性に関心があります。システムを構築し、実世界のインフラが障害時にもどのように安定して動き続けるかを学ぶことに面白さを感じています。",
+      body: "アレゲニー大学でコンピュータサイエンスを専攻し、経済学を副専攻しています。関心はシステムとソフトウェア信頼性の交点にあり、テストスイートが覆い隠している弱点を明るみに出すツールや、障害処理のトレードオフを比較可能な数値に変える分散システムのプロトタイプを作っています。何かが壊れたあとも動き続けるインフラに惹かれています。",
+      educationTitle: "学歴",
+      awardsTitle: "受賞・表彰",
     },
     research: {
       title: "研究",
-      name: "分散キーバリューストアの研究",
-      role: "学部研究員 · Allegheny College",
-      body: "障害検出とレプリケーション戦略のトレードオフを調べるため、C++で分散キーバリューストアを設計・実装しています。このシステムでは、設定可能な間隔とタイムアウトを持つハートビートベースの障害検出に加え、同期・非同期のレプリケーション方式を扱います。",
     },
     projects: {
       title: "プロジェクト",
-      items: [
-        {
-          title: "分散キーバリューストア",
-          body: "障害検出、レプリケーション、システム可用性を研究するためのC++プロトタイプです。",
-        },
-        {
-          title: "オープンソース貢献",
-          body: "Git、GitHub、プルリクエストのワークフローを用いた、オープンソースプロジェクトでのドキュメント作成と貢献活動です。",
-        },
-      ],
+    },
+    experience: {
+      title: "経歴",
+    },
+    skills: {
+      title: "スキル",
     },
     contact: {
       title: "連絡先",
-      body: "ソフトウェアエンジニアリング、バックエンドシステム、分散システム、研究機会に関心があります。",
+      body: "システム、分散インフラ、機械学習システムの領域で、ソフトウェアエンジニアリングおよび研究の機会を探しています。",
       email: "メール",
       resume: "履歴書",
     },
@@ -108,7 +106,7 @@ export const content = {
     menu: "メニュー",
     news: {
       title: "お知らせ",
-      empty: "まだありません。app/data/news.ts に項目を追加してください。",
+      empty: "まだありません。",
     },
   },
 } as const; // リテラル型を固定し、型推論を厳密にする
@@ -125,11 +123,13 @@ export type NavKey = keyof Content["nav"];
 // 言語切替ボタンでループする配列
 export const languages = ["en", "ja"] as const satisfies readonly Language[];
 
-// ヘッダーナビのリンク定義（href と nav のキーを対応付け）
+// ヘッダーナビのリンク定義。並び順はページ上のセクション順と一致させる
 export const sectionNav: readonly { href: string; labelKey: NavKey }[] = [
-  { href: "#about", labelKey: "about" }, // 自己紹介へジャンプ
-  { href: "#news", labelKey: "news" }, // お知らせへジャンプ
-  { href: "#research", labelKey: "research" }, // 研究へジャンプ
-  { href: "#projects", labelKey: "projects" }, // プロジェクトへジャンプ
-  { href: "#contact", labelKey: "contact" }, // 連絡先へジャンプ
+  { href: "#about", labelKey: "about" },
+  { href: "#news", labelKey: "news" },
+  { href: "#research", labelKey: "research" },
+  { href: "#projects", labelKey: "projects" },
+  { href: "#experience", labelKey: "experience" },
+  { href: "#skills", labelKey: "skills" },
+  { href: "#contact", labelKey: "contact" },
 ];

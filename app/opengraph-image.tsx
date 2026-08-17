@@ -56,7 +56,7 @@ export default function Image() {
             color: "#7c8da6",
           }}
         >
-          Distributed Systems · Operating Systems · Reliability
+          ML Systems · Distributed Systems · Software Reliability
         </div>
       </div>
     ),

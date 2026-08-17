@@ -13,6 +13,10 @@ export function HeroSection({ t }: HeroSectionProps) {
   return (
     <section className="mx-auto flex min-h-screen max-w-5xl flex-col justify-center px-6 py-24 sm:py-16">
       <div className="mb-8">
+        <p className="mb-4 text-sm font-semibold uppercase tracking-widest text-slate-500">
+          {t.hero.location}
+        </p>
+
         <h1 className="mb-6 text-5xl font-bold tracking-tight text-slate-900 sm:text-6xl">
           {t.name} {/* 大きな見出しで名前表示 */}
         </h1>

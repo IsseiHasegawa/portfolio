@@ -29,7 +29,7 @@ const metadataBase = new URL(`${siteBase}/`);
 const defaultTitle = "Issei Hasegawa | Portfolio";
 // 検索結果・OGP 用のサイト説明文
 const description =
-  "Computer Science student at Allegheny College interested in distributed systems, operating systems, and reliable backend infrastructure.";
+  "Computer Science undergraduate at Allegheny College researching machine learning systems, distributed systems, and software reliability.";
 
 // Next.js がビルド時に <head> に出力するメタ情報
 export const metadata: Metadata = {
@@ -42,7 +42,10 @@ export const metadata: Metadata = {
   keywords: [ // 検索キーワードのヒント
     "Issei Hasegawa",
     "Computer Science",
+    "machine learning systems",
     "distributed systems",
+    "mutation testing",
+    "software reliability",
     "Allegheny College",
     "portfolio",
   ],
@@ -89,9 +92,11 @@ const personJsonLd = {
     url: "https://allegheny.edu",
   },
   knowsAbout: [
+    "Machine Learning Systems",
     "Distributed Systems",
     "Operating Systems",
     "Computer Networks",
+    "Software Testing",
     "Software Reliability",
     "C++",
   ],

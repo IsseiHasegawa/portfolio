@@ -91,7 +91,7 @@ export function SiteHeader({
 
         <div className="flex items-center gap-4 text-sm sm:gap-6">
           {/* 狭い画面では隠し、下のパネルに逃がす */}
-          <div className="hidden items-center gap-6 md:flex">
+          <div className="hidden items-center gap-6 lg:flex">
             {sectionNav.map(({ href, labelKey }) =>
               navLink(
                 href,
@@ -132,7 +132,7 @@ export function SiteHeader({
             aria-expanded={menuOpen}
             aria-controls="mobile-nav"
             onClick={() => setMenuOpen((open) => !open)}
-            className="rounded-md p-1 text-slate-600 transition hover:bg-slate-100 hover:text-slate-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-900 md:hidden"
+            className="rounded-md p-1 text-slate-600 transition hover:bg-slate-100 hover:text-slate-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-900 lg:hidden"
           >
             <svg
               width="22"
@@ -158,7 +158,7 @@ export function SiteHeader({
       <div
         id="mobile-nav"
         hidden={!menuOpen}
-        className="border-t border-slate-200 bg-white px-6 py-2 md:hidden"
+        className="border-t border-slate-200 bg-white px-6 py-2 lg:hidden"
       >
         <div className="flex flex-col">
           {sectionNav.map(({ href, labelKey }) =>

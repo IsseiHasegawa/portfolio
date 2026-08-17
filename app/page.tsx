@@ -1,6 +1,5 @@
 // =============================================================================
 // app/page.tsx — トップページ（/）のエントリポイント
-// 詳細はファイル先頭のブロックコメントも参照
 // =============================================================================
 
 // このファイルを Client Component にする宣言（useState を使うため必須）
@@ -15,10 +14,12 @@ import { useDocumentLanguage } from "./lib/use-document-language";
 // 各セクションの UI コンポーネントをインポート
 import { AboutSection } from "./components/about-section";
 import { ContactSection } from "./components/contact-section";
+import { ExperienceSection } from "./components/experience-section";
 import { HeroSection } from "./components/hero-section";
 import { NewsSection } from "./components/news-section";
 import { ProjectsSection } from "./components/projects-section";
 import { ResearchSection } from "./components/research-section";
+import { SkillsSection } from "./components/skills-section";
 import { SiteHeader } from "./components/site-header";
 
 // ページのメインコンポーネント（Next.js が / にこの関数の戻り値を表示する）
@@ -46,17 +47,14 @@ export default function Home() {
         onLanguageChange={setLanguage} // ボタン押下時に language を更新する関数
       />
 
-      {/* ファーストビュー（名前・概要・CTA） */}
+      {/* セクションの並び順は content.ts の sectionNav と一致させること */}
       <HeroSection t={t} />
-      {/* 自己紹介文 */}
-      <AboutSection about={t.about} />
-      {/* お知らせ一覧（日付データは news.ts、ラベルは t.news） */}
+      <AboutSection about={t.about} language={language} />
       <NewsSection news={t.news} language={language} />
-      {/* 研究内容 */}
-      <ResearchSection research={t.research} />
-      {/* プロジェクト一覧 */}
-      <ProjectsSection projects={t.projects} />
-      {/* 連絡先リンク */}
+      <ResearchSection research={t.research} language={language} />
+      <ProjectsSection projects={t.projects} language={language} />
+      <ExperienceSection experience={t.experience} language={language} />
+      <SkillsSection skills={t.skills} language={language} />
       <ContactSection contact={t.contact} />
     </main>
   );
